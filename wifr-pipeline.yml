@@ -20,7 +20,7 @@ resource_requests:
   memory: "5G"
   cpu: 2
 parallelism_spec:
-  constant: 10  # use N computers
+  constant: 100  # use N computers
 output_branch: 2020-04-24_01
 input:
   cross:
