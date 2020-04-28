@@ -1,13 +1,15 @@
 pipeline:
   name: wifr-sensitivity
 description: "Create wifr simulation from input random seeds"
-#standby: true
+standby: true
 transform:
-  image: k8scc01covidacr.azurecr.io/kenchu-wifr-analysis:v8
+  image: k8scc01covidacr.azurecr.io/kenchu-wifr-git:v1
   image_pull_secrets:
     - k8scc01covidacr-registry-connection
   cmd:
     - "/main.sh"
+    - "--src"
+    - "/pfs/git/src/"
     - "--params"
     - "/pfs/params/"
     - "--data"
@@ -18,7 +20,8 @@ resource_requests:
   memory: "5G"
   cpu: 2
 parallelism_spec:
-  constant: 2   # use N computers
+  constant: 10  # use N computers
+output_branch: 2020-04-24_01
 input:
   cross:
     - pfs:
@@ -30,3 +33,7 @@ input:
         repo: wifr-data
         glob: "/"
         branch: 2020-04-24_01
+    - git:
+        name: git
+        URL: "https://github.com/kennethchu-statcan/covid19-pachyderm.git"
+        branch: master

@@ -26,15 +26,7 @@ RUN conda install --quiet --yes \
       "r-jsonlite" \
     && conda clean --all -f -y
 
-#RUN git clone --depth=1 \
-#      https://github.com/kennethchu-statcan/covid19/ \
-#      /tmp/covid19 \
-#    && mv /tmp/covid19/005-test-kubeflow/pipeline-test/image-loadData/src /src \
-#    && rm -rf /tmp/covid19
 
-COPY src     /src
-
-COPY main.sh /main.sh
-
-ENTRYPOINT ["/main.sh"]
-
+# This will be mounted by the pachyderm
+# pipeline.
+ENTRYPOINT ["/pfs/git/main.sh"]
