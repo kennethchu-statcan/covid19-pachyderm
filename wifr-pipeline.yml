@@ -17,8 +17,8 @@ transform:
     - "--output"
     - "/pfs/out"
 resource_requests:
-  memory: "5G"
-  cpu: 2
+  memory: "6G"
+  cpu: 3
 parallelism_spec:
   constant: 100  # use N computers
 output_branch: 2020-04-24_01
