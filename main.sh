@@ -12,6 +12,11 @@ while test -n "$1"; do
             DATA="$1"
             ;;
 
+        --src)
+            shift
+            SRC="$1"
+            ;;
+
         --output)
             shift
             OUTPUT="$1"
@@ -23,7 +28,7 @@ while test -n "$1"; do
             ;;
 
         *)
-            echo "Invalid option $1; allowed: --data --params --options" >&2
+            echo "Invalid option $1; allowed: --src --data --params --output" >&2
             exit 1
             ;;
     esac
@@ -47,7 +52,7 @@ if ! test $ERROR_CHECK_THIS = 1; then
 fi
 
   dataDIR="$DATA"
-  codeDIR=/src
+  codeDIR="$SRC"
 outputDIR="$OUTPUT"
 
  myRscript=${codeDIR}/main-pachyderm.R
