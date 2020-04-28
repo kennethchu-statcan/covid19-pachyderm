@@ -35,5 +35,5 @@ input:
         branch: 2020-04-24_01
     - git:
         name: git
-        URL: "https://github.com/kennethchu-statcan/covid19-pachyderm.git"
+        url: "https://github.com/kennethchu-statcan/covid19-pachyderm.git"
         branch: master
