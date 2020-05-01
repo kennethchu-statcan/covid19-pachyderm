@@ -4,6 +4,7 @@ data.directory    <- normalizePath(command.arguments[1]);
 params.file       <- normalizePath(command.arguments[2]);
 code.directory    <- normalizePath(command.arguments[3]);
 output.directory  <- normalizePath(command.arguments[4]);
+nproc             <-               command.arguments[5];
 
 # add custom library using .libPaths()
 print( data.directory   );
@@ -107,7 +108,8 @@ jurisdictions <- c(
 StanModel <- 'base';
 
 ### ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ###
-options(mc.cores = parallel::detectCores());
+#options(mc.cores = parallel::detectCores());
+options(mc.cores = nproc);
 
 FILE.stan.model.0 <- file.path(  code.directory,paste0(StanModel,'.stan'));
 FILE.stan.model   <- file.path(output.directory,paste0(StanModel,'.stan'));
