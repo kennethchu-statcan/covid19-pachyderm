@@ -29,4 +29,7 @@ RUN conda install --quiet --yes \
 
 # This will be mounted by the pachyderm
 # pipeline.
-ENTRYPOINT ["/pfs/git/main.sh"]
+
+COPY main.sh /main.sh
+COPY src /src
+ENTRYPOINT ["/main.sh"]
