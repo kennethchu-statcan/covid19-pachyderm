@@ -16,12 +16,17 @@ transform:
     - "/pfs/data/"
     - "--output"
     - "/pfs/out"
+    - "--nproc"
+    - "2"
 resource_requests:
-  memory: "6G"
+  memory: "2G"
+  cpu: 2
+resource_limits:
+  memory: "3G"
   cpu: 3
 parallelism_spec:
-  constant: 100  # use N computers
-output_branch: 2020-04-24_01
+  constant: 100  # use N pods
+output_branch: 2020-04-26_01
 input:
   cross:
     - pfs:

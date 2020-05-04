@@ -48,6 +48,7 @@ done
 # IMPORTANT! /pfs/ filesystem uses symlinks
 # So need -L in the find command.
 paramsFILE=$(find -L "$JSON_FOLDER" -type f | sed 1q)
+SEED=$(jq -r '.seed' ${paramsFILE})
 
 ERROR_CHECK_THIS=$(find -L "$JSON_FOLDER" -type f | wc -l)
 if ! test $ERROR_CHECK_THIS = 1; then
@@ -59,12 +60,14 @@ fi
 
   dataDIR="$DATA"
   codeDIR="$SRC"
-outputDIR="$OUTPUT"
+outputDIR="$OUTPUT/$SEED"
+mkdir -p ${outputDIR}
 
 if test -z "$NPROC"; then
     # default
     NPROC=2
 fi
+
 
  myRscript=${codeDIR}/main-pachyderm.R
 stdoutFile=${outputDIR}/stdout.R.`basename ${myRscript} .R`
