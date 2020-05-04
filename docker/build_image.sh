@@ -6,7 +6,7 @@ set -e
 
 test -z "$1" && echo Need version number && exit 1
 
-IMAGE="kenchu-wifr-git:$1"
+IMAGE="kenchu-wifr-nogit:$1"
 
 docker build . -t $IMAGE > stdout.docker.build 2> stderr.docker.build
 
